@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TANexo</string>
+    <string name="errorMessage">Este campo es obligatorio</string>
+</resources>
