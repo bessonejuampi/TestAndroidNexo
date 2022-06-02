@@ -18,6 +18,10 @@ class RegistrerUserActivity: AppCompatActivity() {
         binding = ActivityNewUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if (supportActionBar != null) {
+            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        }
+
         viewModel=RegistrerUserViewModel(this)
 
         binding.btRegistrer.setOnClickListener {

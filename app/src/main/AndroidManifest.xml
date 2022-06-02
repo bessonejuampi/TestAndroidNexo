@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".RegistrerUserActivity"/>
         <activity android:name=".EventActivity"/>
+        <activity android:name=".CourseActivity"/>
     </application>
 
 </manifest>
