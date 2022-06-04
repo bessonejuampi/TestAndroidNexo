@@ -3,6 +3,7 @@ package com.nexo.tanexo
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -15,11 +16,14 @@ class EventAdapter(
     private val listEvents:List<Event>
 ) :RecyclerView.Adapter<EventAdapter.EventViewHolder>(){
 
+    var onEventClick: (idEvent : Int) -> Unit = {}
+
     override fun getItemCount()=listEvents.size
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        holder.bind(listEvents[position])
+        holder.bind(listEvents[position], onEventClick)
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val binding = EventCardBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -29,12 +33,16 @@ class EventAdapter(
         private val itemView : EventCardBinding,
         private val context: Context
     ) : RecyclerView.ViewHolder(itemView.root){
-        fun bind(event: Event){
+        fun bind(event: Event, onEventClick: (Int) -> Unit) = with(itemView){
             itemView.findViewById<LinearLayout>(R.id.llCardEvent).apply {
                 this.findViewById<TextView>(R.id.tvNameEvent).text = event.nameEvent
                 this.findViewById<TextView>(R.id.tvPlace).text = event.place
                 this.findViewById<TextView>(R.id.tvDescription).text = event.description
+                this.setOnClickListener {
+                    onEventClick.invoke(event.id)
+                }
             }
+
         }
 
 
