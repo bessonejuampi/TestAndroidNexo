@@ -1,12 +1,12 @@
 package com.nexo.tanexo.models
 
+import com.google.gson.annotations.SerializedName
+
 
 data class User (
-    var name : String,
-    var lastName : String,
-    var email : String,
-    var pass : String,
-    var idcourse : String?=null,
-    var id : Int=0
+    @SerializedName("apellido") var name : String,
+    @SerializedName("nombre") var lastName : String,
+    @SerializedName("email") var email : String,
+    @SerializedName("contrasenia") var pass : String
 ) {
 }

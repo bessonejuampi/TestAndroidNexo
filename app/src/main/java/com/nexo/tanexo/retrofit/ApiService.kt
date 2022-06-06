@@ -1,14 +1,9 @@
 package com.nexo.tanexo.retrofit
 
-import com.nexo.tanexo.models.Course
-import com.nexo.tanexo.models.Event
-import com.nexo.tanexo.models.ResponseCourse
-import com.nexo.tanexo.models.ResponseEvent
+import com.nexo.tanexo.models.*
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
+import java.util.*
 
 interface ApiService {
     @GET("eventos/todos?")
@@ -22,5 +17,27 @@ interface ApiService {
     fun login(
         @Field("email") email: String?,
         @Field("contrasenia") pass: String?
-    ): Call<String?>?
+    ): Call<ResponseLogin?>?
+
+    @FormUrlEncoded
+    @POST("usuarios/nuevo")
+    fun newUser(
+        @Field("apellido") name : String?,
+        @Field("nombre") lastName : String?,
+        @Field("contrasenia") pass: String?,
+        @Field("email") email: String?
+    ): Call<ResponseModel?>?
+
+    @GET("inscripciones/{user_id}/{course_id}")
+    fun newInscription(
+        @Path("user_id") userid : Int?,
+        @Path("course_id") courseid : Int?
+    ) : Call<ResponseModel?>?
+
+    @GET("inscripciones/{user_id}")
+    fun getInscriptionFromIdUser(
+        @Path("user_id") userid : Int?
+    ): Call<ResponseMyCourse?>?
+
+
 }

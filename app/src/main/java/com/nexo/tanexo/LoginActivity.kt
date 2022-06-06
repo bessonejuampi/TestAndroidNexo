@@ -17,15 +17,12 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var viewModel = LoginViewModel()
+        var viewModel = LoginViewModel(this)
         binding.btLogIn.setOnClickListener {
             if (binding.etEmail.text.toString().isNullOrEmpty() || binding.etPass.text.toString().isNullOrEmpty()){
                 Toast.makeText(this, "Por favor, ingrese sus datos", Toast.LENGTH_SHORT).show()
             }else{
-               if(!viewModel.logIn(binding.etEmail.text.toString(), binding.etPass.text.toString())){
-                   val intent = Intent(this, EventActivity::class.java)
-                   startActivity(intent)
-               }
+               viewModel.logIn(binding.etEmail.text.toString(), binding.etPass.text.toString())
             }
         }
 
@@ -37,6 +34,4 @@ class LoginActivity : AppCompatActivity() {
 
 
     }
-
-
 }

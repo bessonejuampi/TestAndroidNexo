@@ -11,17 +11,40 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:padding="16dp">
-
-        <TextView
-            android:id="@+id/tvNameCouse"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Name Corse"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:layout_weight="1"/>
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/tvNameCouse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name Corse"
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+            <TextView
+                android:id="@+id/tvDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="duration"
+                android:textSize="17sp"/>
+            <TextView
+                android:id="@+id/tvLecturer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="lecturer"
+                android:textSize="17sp"/>
+            <TextView
+                android:id="@+id/tvDayHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="day_hour"
+                android:textSize="17sp"/>
+
+        </LinearLayout>
 
         <Button
-            android:id="@+id/btRegistrer"
+            android:id="@+id/btInscription"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

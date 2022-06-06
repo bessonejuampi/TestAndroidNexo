@@ -3,6 +3,7 @@ package com.nexo.tanexo
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.nexo.tanexo.databinding.ActivityNewUserBinding
@@ -23,6 +24,7 @@ class RegistrerUserActivity: AppCompatActivity() {
         }
 
         viewModel=RegistrerUserViewModel(this)
+
 
         binding.btRegistrer.setOnClickListener {
             viewModel!!.validation(

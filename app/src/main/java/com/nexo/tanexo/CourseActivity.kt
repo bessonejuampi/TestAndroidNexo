@@ -1,6 +1,7 @@
 package com.nexo.tanexo
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,11 +33,16 @@ class CourseActivity : AppCompatActivity() {
         })
 
         viewModel!!.getCourse(idEvent)
+
     }
 
     private fun setupList(){
         binding.rvCouse.layoutManager = LinearLayoutManager(this)
         val adapter = CouseAdapter(courseList)
         binding.rvCouse.adapter = adapter
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId === android.R.id.home) { onBackPressed() }
+        return super.onOptionsItemSelected(item)
     }
 }

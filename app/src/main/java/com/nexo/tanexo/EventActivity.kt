@@ -2,6 +2,8 @@ package com.nexo.tanexo
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -45,5 +47,20 @@ class EventActivity :AppCompatActivity() {
             startActivity(intent)
         }
         binding.rvEvent.adapter = adapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_user,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) { onBackPressed() }
+        if (item.itemId == R.id.MyCourses){
+            val intent = Intent(this, MyCoursesActivity::class.java)
+            startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

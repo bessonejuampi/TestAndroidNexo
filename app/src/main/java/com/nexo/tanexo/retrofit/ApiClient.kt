@@ -1,6 +1,7 @@
 package com.nexo.tanexo.retrofit
 
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -10,12 +11,16 @@ class ApiClient {
 
     fun getApiService(): ApiService? {
         val httpClient = OkHttpClient.Builder()
+            .addInterceptor(HttpLoggingInterceptor().apply {
+            this.level = HttpLoggingInterceptor.Level.BODY
+        })
+            .build()
         val baseUrl = "http://testing.nexoserver.com.ar/bootcampmobile/"
         if (API_SERVICE == null) {
             val retrofit = Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(httpClient.build()) // <-- usamos el log level
+                .client(httpClient)
                 .build()
             API_SERVICE = retrofit.create(ApiService::class.java)
         }
